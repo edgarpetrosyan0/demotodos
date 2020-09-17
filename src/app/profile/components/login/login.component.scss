@@ -1,0 +1,76 @@
+.wrappers {
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Form */
+.inner-wrappers {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 400px;
+  padding: 30px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.inner-wrappers input {
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  border-radius: 3px 3px 3px 3px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.inner-wrappers button {
+  font-weight: 600;
+  text-transform: uppercase;
+  outline: none;
+  background:#59d3d3;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  border-radius: 3px 3px 3px 3px;
+  color: #FFFFFF;
+  font-size: 15px;
+  cursor: pointer;
+}
+.inner-wrappers .message {
+  margin: 15px 0 0;
+  font-size: 12px;
+}
+.inner-wrappers .message a {
+  text-decoration: underline;
+  line-height: 4;
+  font-size: 17px;
+  color:#59d3d3;
+  cursor: pointer;
+}
+
+.inner-wrappers > div > p {
+  color: #59d3d3;
+  font-size: 20px;
+}
+.title {
+  font-size: 24px;
+}
+
+.filde-title{
+  margin-bottom: 9px;
+  display: flex;
+}
+
+.not-valid {
+  color: red;
+  transition: all .4s;
+}

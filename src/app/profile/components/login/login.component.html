@@ -1,0 +1,23 @@
+<div class="wrappers">
+  <div class="inner-wrappers">
+    <div>
+      <p>TO DO's list</p>
+      <h3 class="title">Login</h3>
+    </div>
+    <form class="login-form" (ngSubmit)="login()">
+      <div>
+        <label class="filde-title">Username</label>
+        <input autocomplete="of" type="text" id="userName" name="userName" placeholder="todo" [(ngModel)]="userName" />
+      </div>
+      <div>
+        <label class="filde-title">Password</label>
+        <input autocomplete="of" type="password" id="password" name="password" placeholder="12345"
+          [(ngModel)]="password" />
+      </div>
+      <p *ngIf="service.authorizedMessage" class="not-valid">Authorization failed, incorrect Username or Password
+      </p>
+      <button type="submit" (click)="login()">login</button>
+      <p class="message">Not registered? <a (click)="registrationPage()">Create an account</a></p>
+    </form>
+  </div>
+</div>

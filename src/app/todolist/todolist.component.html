@@ -1,0 +1,107 @@
+<app-header></app-header>
+<div class="todo-wrppers container">
+    <div>
+        <p class="ngxs-title">Custom TO DO's </p>
+    </div>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search task">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+        </div>
+    </div>
+    <div class="task-header">
+        <div class="task-tools">
+            <span class="task-count">{{todosNoLibrary.length}} tasks <i class="fa fa-sort-alpha-asc sorting" aria-hidden="true" ></i>
+            </span>
+            <div class="task-filters">
+                
+                <button class="task-filter" [ngClass]="{'is-active': statusSelected === 0}"
+                    (click)="showAllItems(0)">All</button>
+                <button class="task-filter" [ngClass]="{'is-active': statusSelected === 1}" (click)="showAllActive(1)">
+                    <i  [ngClass]="{'active-status fa fa-circle': statusSelected === 1 , 'd-none': !selected}"
+                        aria-hidden="true"></i> Active
+                </button>
+                <button class="task-filter" [ngClass]="{'is-active': statusSelected === 2}"
+                    (click)="showAllCompleted(2)"> <i  [ngClass]="{'fa fa-circle complete-status ': statusSelected === 2 , 'd-none': !selected}"
+                        aria-hidden="true"></i>
+                    Completed</button></div>
+        </div>
+        <form class="task-form">
+            <input autocomplete="off" class="task-input" placeholder="Add a new task"
+                name="{{'field-' + todosNoLibrary}}" [(ngModel)]="newTodo">
+            <button class="task-button" (click)="addItem($event)">Add</button></form>
+    </div>
+    <ng-container *ngIf="!selected">
+        <div class="scroll-item">
+            <div class="task-list" *ngFor="let item of todosNoLibrary; let i = index">
+                <div class="task-item" [ngClass]="{'completed': item.completed}"
+                    (click)="item.completed = !item.completed">
+                    <input class="task-status" id="{{i}}" [(ngModel)]="item.completed" type="checkbox">
+                    <label class="task-name">{{ item.newTodo }}</label>
+                    <button class="task-delete" (click)="deleteItem(i)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="selected">
+        <div class="scroll-item">
+            <div class="task-list" *ngFor="let item of todosArr; let i = index">
+                <div class="task-item" [ngClass]="{'completed': item.completed}">
+                    <input class="task-status" id="{{i}}" [(ngModel)]="item.completed" type="checkbox">
+                    <label class="task-name">
+                        {{ item.newTodo }}</label>
+                    <button class="task-delete" (click)="deleteItem(i)"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+<!--NGXS-->
+<div class="todo-wrppers container">
+    <div>
+        <p class="ngxs-title">NGXS TO DO's</p>
+    </div>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search task">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+        </div>
+    </div>
+    <div class="task-header">
+        <div class="task-tools">
+            <span class="task-count">{{ uncheckedTodos | async }} tasks <i class="fa fa-sort-alpha-asc sorting" aria-hidden="true" ></i></span>
+            <div class="task-filters">
+                <button class="task-filter" [ngClass]="{'is-active': statusSelected === 0}"
+                    (click)="showAllItems(0)">All</button>
+                <button class="task-filter" [ngClass]="{'is-active': statusSelected === 1}" (click)="showAllActive(1)">
+                    <i  [ngClass]="{'active-status fa fa-circle': statusSelected === 1 , 'd-none': !selected}"
+                        aria-hidden="true"></i> Active
+                </button>
+                <button class="task-filter" [ngClass]="{'is-active': statusSelected === 2}"
+                    (click)="showAllCompleted(2)"> <i  [ngClass]="{'fa fa-circle complete-status ': statusSelected === 2 , 'd-none': !selected}"
+                        aria-hidden="true"></i>
+                    Completed</button></div>
+        </div>
+        <form [formGroup]="todoForm" (submit)="submitTodo()" class="task-form">
+            <input autocomplete="off" class="task-input" placeholder="Add a new task" type="text" id="description"
+                formControlName="descriptionCtrl">
+            <button class="task-button" (click)="submitTodo()">Add</button></form>
+    </div>
+    <ng-container *ngIf="(todos | async).length > 0">
+        <div class="scroll-item">
+            <div class="task-list" *ngFor="let todo of todos | async">
+                <div class="task-item" [ngClass]="{'completed': todo.done}">
+                    <input class="task-status" [checked]="todo.done" (change)="toggleTodo(todo)" type="checkbox">
+                    <label class="task-name"> {{ todo.description }}</label>
+                    <button class="task-delete" (click)="deleteTodo(todo)"><i class="fa fa-trash-o"
+                            aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

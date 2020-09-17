@@ -1,0 +1,28 @@
+<div class="wrappers">
+    <div class="inner-wrappers">
+        <div>
+            <p>TO DO's list</p>
+            <h3 class="title">Registration</h3>
+        </div>
+        <form class="register-form" (ngSubmit)="registration()">
+            <div>
+                <label class="filde-title">Username</label>
+                <input type="text" />
+            </div>
+            <div>
+                <label class="filde-title">E-mail</label>
+                <input type="text" />
+            </div>
+            <div>
+                <label class="filde-title">Password</label>
+                <input type="password" />
+            </div>
+            <div>
+                <label class="filde-title">Re-Enter Password</label>
+                <input type="password" />
+            </div>
+            <button type="submit" (click)="registration()">Sign Up</button>
+            <p class="message">Back to Login page? <a (click)="loginPage()">Login</a></p>
+        </form>
+    </div>
+</div>

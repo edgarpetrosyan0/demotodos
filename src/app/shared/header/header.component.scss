@@ -1,0 +1,26 @@
+.header {
+    overflow: hidden;
+    background-color: #3b4e5d;
+    padding: 4px;
+    margin-top: -7px;
+    width: 100%;
+
+    box-shadow: -1px 2px 2px 0 rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .header a {
+    float: left;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 700;
+  }
+
+
+  .header-right {
+    float: right;
+  }
